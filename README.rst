@@ -3,10 +3,10 @@ iterated-sums-signature-py
 
 An (inefficient) implementation of the `iterated-sums signature <https://arxiv.org/abs/1906.05823>`::
 
-    import iterated_sum_signature as iss
-    x = [1., 10., -99, -50]
-    sig = iss.signature( x )
-    print( sig )
+   import iterated_sums_signature as iss 
+   x = [1., 10., -99, -50] 
+   sig = iss.signature( x, upto_level=5 ) 
+   print( sig ) 
 
 
 Installation
