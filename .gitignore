@@ -1,0 +1,5 @@
+*
+!.gitignore
+!*.py
+!iterated_sums_signature
+!tests
