@@ -96,7 +96,7 @@ class Monomial(dict):
                     return str(v)
                 else:
                     return str(v) + '^' + str(p)
-            return '[' + ''.join([ _s(v,p)  for v,p in self.items()]) + ']'
+            return '[' + ' '.join([ _s(v,p)  for v,p in self.items()]) + ']'
 
     def deg(self):
         return reduce(operator.add, [p for _, p in self.items()])
