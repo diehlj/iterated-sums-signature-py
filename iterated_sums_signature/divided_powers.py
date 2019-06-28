@@ -395,7 +395,9 @@ def coarser(CC):
     else:
         for right in coarser(clazz(CC[1:])):
             yield clazz( CC[:1] ) + right
-        yield from coarser( clazz( ( list(CC[0] * CC[1])[0][0],) + CC[2:] ) )
+        #yield from coarser( clazz( ( list(CC[0] * CC[1])[0][0],) + CC[2:] ) )
+        for x in coarser( clazz( ( list(CC[0] * CC[1])[0][0],) + CC[2:] ) ):
+            yield x
 
 def f(C,D):
     """
