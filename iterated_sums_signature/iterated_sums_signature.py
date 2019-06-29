@@ -20,8 +20,8 @@ def signature(x, upto_level):
     ONE = dp.CompositionConcatenation()
     if isinstance(x, list) or isinstance(x, tuple):
         x = np.array(x)
-        if len(x.shape) == 1:
-            x = x[np.newaxis,:]
+    if len(x.shape) == 1:
+        x = x[np.newaxis,:]
 
     dim, N = x.shape
     x = np.vstack( tuple(x[i] - x[i,0] for i in range(dim)) )
