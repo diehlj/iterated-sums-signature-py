@@ -24,7 +24,7 @@ def signature(x, upto_level):
         x = x[np.newaxis,:]
 
     dim, N = x.shape
-    x = np.vstack( tuple(x[i] - x[i,0] for i in range(dim)) )
+    delta_x = np.diff( x, prepend=0, axis=1 )
     prevz = [ ONE ]
     sig = lc.LinearCombination( { ONE : np.ones( N ) } )
 
@@ -34,7 +34,7 @@ def signature(x, upto_level):
             for prev in prevz:
                 if not prev == ONE:
                     concat_v = dp.CompositionConcatenation( tuple( p for p in prev ) + (dp.Monomial({ell:1}),) )
-                    concat_s = np.hstack( (np.array( [0.] ), np.cumsum( sig[prev][0:-1] * ( x[ell][1:] - x[ell][0:-1] ) ) ) )
+                    concat_s = np.hstack( (np.array( [0.] ), np.cumsum( sig[prev][0:-1] * delta_x[ell][1:] ) ) )
                     currentz.append( concat_v )
                     sig[ concat_v ] = concat_s
                 if prev == ONE:
@@ -43,7 +43,7 @@ def signature(x, upto_level):
                     last_monomial = dp.Monomial( prev[-1] )
                 dp.safe_add( last_monomial, ell, +1 )
                 bullet_v = dp.CompositionConcatenation( tuple( p for p in prev[0:-1] ) + (last_monomial, ) )
-                bullet_s = np.hstack( (np.array( [0.] ), np.cumsum( sig[prev][1:] * ( x[ell][1:] - x[ell][0:-1] )) ) )
+                bullet_s = np.hstack( (np.array( [0.] ), np.cumsum( sig[prev][1:] * delta_x[ell][1:] ) ) )
                 if not prev == ONE:
                     bullet_s = bullet_s - concat_s
                 currentz.append( bullet_v )
