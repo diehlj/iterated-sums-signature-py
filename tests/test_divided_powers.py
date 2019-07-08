@@ -14,6 +14,16 @@ def test_compositions():
             ==\
             list(dp.compositions(['a','b'], 1))
 
+def test_quasi_shuffle():
+    X = dp.M_qs( dp.Monomial({'1':1}) )
+    Y = dp.M_qs( dp.Monomial({'1':3}), dp.Monomial({'1':7}))
+    assert dp.M_qs( dp.Monomial({'1':1}), dp.Monomial({'1':3}), dp.Monomial({'1':7}) )\
+         + dp.M_qs( dp.Monomial({'1':3}), dp.Monomial({'1':1}), dp.Monomial({'1':7}) )\
+         + dp.M_qs( dp.Monomial({'1':3}), dp.Monomial({'1':7}), dp.Monomial({'1':1}) )\
+         + dp.M_qs( dp.Monomial({'1':4}), dp.Monomial({'1':7}) )\
+         + dp.M_qs( dp.Monomial({'1':3}), dp.Monomial({'1':8}) )\
+         == X * Y
+
 def test_divided_powers():
     def ot(a,b):
         return lc.LinearCombination.otimes(a,b)

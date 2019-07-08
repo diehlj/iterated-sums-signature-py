@@ -88,8 +88,8 @@ class Monomial(dict):
     def __str__(self):
         if len(self) == 0:
             return 'e'
-        elif len(self) == 1 and list(self.items())[0][1] == 1:
-            return str( list(self.items())[0][0] )
+        #elif len(self) == 1 and list(self.items())[0][1] == 1:
+        #    return str( list(self.items())[0][0] )
         else:
             def _s(v,p):
                 if p == 1:
