@@ -14,6 +14,9 @@ def id(x):
 def terminal_values(s):
     return lc.LinearCombination( {v:c[-1] for v,c in s.items()} )
 
+def as_array(s, upto_level):
+    KEYS = sorted(s.keys())
+    return np.vstack( [ s[k] for k in KEYS ] )
 
 def signature(x, upto_level):
     # TODO Using Chen might be faster.

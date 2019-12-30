@@ -12,17 +12,24 @@ def get(z,_DS):
 def test_signature():
     x = np.array( [ [0,10,-20,50],
                     [0,-200,100,500]  ] )
-
+    DS = iss.signature( x, 1 )
+    assert np.array_equal(\
+            [[   1.,    1.,    1.,    1.],\
+             [   0.,   10.,  -20.,   50.],\
+             [   0., -200.,  100.,  500.]], iss.as_array(DS, 1))
+    assert np.array_equal(\
+            [[  1.],\
+             [ 50.],\
+             [500.]], iss.as_array(iss.terminal_values(DS), 1))
+    
     DS = iss.signature( x, 6 )
-
-    #print('DS=', DS)
-    #xx
 
     assert np.array_equal( get( M_qs({0:1},{0:1}), DS ),\
                            np.array( [0, 0, 10 * (-30), 10 * (-30) + (10 - 30) * 70 ] ) )
 
     assert np.array_equal( get( M_qs({0:2}), DS ),\
                            np.array( [0, 10**2, 10**2  + (-30)**2, 10**2  + (-30)**2 + 70**2] ) )
+
 
 
     ##################
