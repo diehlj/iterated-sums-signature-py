@@ -14,8 +14,8 @@ Installation
 
 Install with::
 
-   pip install git+git://github.com/diehlj/linear-combination-py
-   pip install git+git://github.com/diehlj/iterated-sums-signature-py
+   pip install git+https://github.com/diehlj/linear-combination-py
+   pip install git+https://github.com/diehlj/iterated-sums-signature-py
 
 Copyright © 2019 Joscha Diehl
 
