@@ -1,7 +1,7 @@
 iterated-sums-signature-py
 --------------------------
 
-An (inefficient) implementation of the `iterated-sums signature <https://arxiv.org/abs/1906.05823>` (a discrete generalization of Chen's iterated-integrals signature)::
+An (inefficient) implementation of the `iterated-sums signature (also called discrete signature) <https://arxiv.org/abs/1906.05823>` (a discrete generalization of Chen's iterated-integrals signature)::
 
    import iterated_sums_signature as iss 
    x = [1., 10., -99, -50] 
